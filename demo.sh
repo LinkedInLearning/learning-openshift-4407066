@@ -6,7 +6,7 @@
 . ~/demo-magic.sh
 
 # Variables
-PROJECT=serverless-demo
+PROJECT=serverless
 DEMO_PROMPT="${GREEN}➜  ${CYAN}\W ${COLOR_RESET}"
 
 # Hide the evidence
