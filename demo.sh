@@ -6,7 +6,7 @@
 
 # Variables
 PROJECT=serverless
-DEMO_PROMPT="${GREEN}➜  ${CYAN}serverless ${COLOR_RESET}"
+DEMO_PROMPT="${GREEN}➜  ${CYAN}03_02 ${COLOR_RESET}"
 
 # Hide the evidence
 oc logout
