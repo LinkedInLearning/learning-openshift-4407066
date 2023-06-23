@@ -17,7 +17,7 @@ wait
 clear
 
 pei "bat locustfile.py"
-pe "locust -u 500 -r 10 -t 10s -H https://simple-deno-api-$PROJECT.apps.$SANDBOX --autostart --autoquit 1 --headless"
+pe "locust -u 500 -r 1 -t 10s -H https://simple-deno-api-$PROJECT.apps.$SANDBOX --autostart --autoquit 1 --headless"
 wait
 clear
 
