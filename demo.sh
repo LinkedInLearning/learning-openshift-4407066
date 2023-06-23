@@ -7,6 +7,7 @@
 
 # Variables
 PROJECT=serverless-demo
+DEMO_PROMPT="${GREEN}➜  ${CYAN}\W ${COLOR_RESET}"
 
 # Hide the evidence
 oc logout
