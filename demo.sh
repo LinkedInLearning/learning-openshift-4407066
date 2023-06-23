@@ -4,7 +4,7 @@
 # https://github.com/paxtonhare/demo-magic
 . ~/demo-magic.sh
 
-DEMO_PROMPT="${GREEN}➜  ${CYAN}\W ${COLOR_RESET}"
+DEMO_PROMPT="${GREEN}➜  ${CYAN}02_03 ${COLOR_RESET}"
 
 # Clear the screen before starting
 clear
