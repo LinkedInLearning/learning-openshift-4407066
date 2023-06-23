@@ -5,26 +5,19 @@
 . ~/demo-magic.sh
 
 # Variables
-PROJECT=serverless
+PROJECT=akosma-dev
 DEMO_PROMPT="${GREEN}➜  ${CYAN}03_02 ${COLOR_RESET}"
+SANDBOX=sandbox-m2.ll9k.p1.openshiftapps.com
 
-# Hide the evidence
-oc logout
 clear
 
-# Actual demo
-pe "oc login -u developer -p developer https://api.crc.testing:6443"
-pe "oc new-project $PROJECT"
-wait
-clear
-
-pei "bat service.yml"
+pe "bat service.yml"
 pe "oc apply -f service.yml"
 wait
 clear
 
 pei "bat locustfile.py"
-pe "locust -u 500 -r 10 -t 30s -H https://fortune-$PROJECT.apps-crc.testing --autostart --autoquit 1 --headless"
+pe "locust -u 500 -r 10 -t 10s -H https://simple-deno-api-$PROJECT.apps.$SANDBOX --autostart --autoquit 1 --headless"
 wait
 clear
 
