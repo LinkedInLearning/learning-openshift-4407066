@@ -1,16 +1,16 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: fortune
+  name: simple-deno-api
 spec:
   template:
     metadata:
-      name: fortune-v1
+      name: simple-deno-api-v1
       annotations:
         autoscaling.knative.dev/min-scale: "0"
         autoscaling.knative.dev/max-scale: "10"
         autoscaling.knative.dev/target: "3"
     spec:
       containers:
-      - image: registry.gitlab.com/vshn/applications/fortune-go:latest
+      - image: registry.gitlab.com/akosma/simple-deno-api:latest
 
