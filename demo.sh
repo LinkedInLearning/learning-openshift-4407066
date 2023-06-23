@@ -1,13 +1,12 @@
 #!/bin/bash
 
-########################
-# Include the magic
-########################
+# Requires the file demo-magic.sh, available at
+# # https://github.com/paxtonhare/demo-magic
 . ~/demo-magic.sh
 
 # Variables
 PROJECT=serverless
-DEMO_PROMPT="${GREEN}➜  ${CYAN}\W ${COLOR_RESET}"
+DEMO_PROMPT="${GREEN}➜  ${CYAN}serverless ${COLOR_RESET}"
 
 # Hide the evidence
 oc logout
