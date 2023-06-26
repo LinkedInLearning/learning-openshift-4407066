@@ -85,6 +85,8 @@ objects:
       app: ${APPLICATION_NAME}
     name: ${APPLICATION_NAME}
   spec:
+    selector:
+      app.kubernetes.io/name: ${APPLICATION_NAME}
     ports:
     - name: 5432-tcp
       port: 5432
