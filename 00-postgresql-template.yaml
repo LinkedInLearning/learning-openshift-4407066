@@ -46,7 +46,7 @@ objects:
             value: ${POSTGRESQL_PASSWORD}
           - name: POSTGRESQL_DATABASE
             value: ${POSTGRESQL_DATABASE}
-          image: docker.io/library/postgres:15.3
+          image: registry.redhat.io/rhel9/postgresql-15:latest
           imagePullPolicy: Always
           livenessProbe:
             exec:
