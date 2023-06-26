@@ -86,7 +86,8 @@ objects:
     name: ${APPLICATION_NAME}
   spec:
     selector:
-      app.kubernetes.io/name: ${APPLICATION_NAME}
+      name: ${APPLICATION_NAME}
+    type: ClusterIP
     ports:
     - name: 5432-tcp
       port: 5432
