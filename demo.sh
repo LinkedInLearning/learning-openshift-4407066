@@ -21,3 +21,7 @@ clear
 pei "bat 02-app.yaml"
 pe "oc apply -f 02-app.yaml"
 wait
+
+clear
+pei "curl http://apitest.apps-crc.testing/fortune --silent | jq"
+
