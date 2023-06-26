@@ -2,6 +2,22 @@ apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
   name: postgresql
+parameters:
+  - name: APPLICATION_NAME
+    description: "The application name"
+    value: postgresql
+  - name: POSTGRESQL_USER
+    description: "Username for PostgreSQL user that will be used for accessing the database."
+    value: user
+  - name: POSTGRESQL_PASSWORD
+    description: "Password for the PostgreSQL connection user."
+    value: password
+  - name: POSTGRESQL_DATABASE
+    description: "Name of PostgreSQL database accessed."
+    value: catalog
+  - name: MEMORY_LIMIT
+    description: "Memory limit for PostgreSQL container."
+    value: 512Mi
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
@@ -30,7 +46,7 @@ objects:
             value: ${POSTGRESQL_PASSWORD}
           - name: POSTGRESQL_DATABASE
             value: ${POSTGRESQL_DATABASE}
-          image: ${IMAGE_STREAM_NAMESPACE}/${IMAGE_STREAM_NAME}:${IMAGE_STREAM_TAG}
+          image: docker.io/library/postgres:15.3
           imagePullPolicy: Always
           livenessProbe:
             exec:
@@ -62,17 +78,6 @@ objects:
         - name: postgresql-data
           persistentVolumeClaim:
             claimName: ${APPLICATION_NAME}
-    test: false
-    triggers:
-    - type: ConfigChange
-    - imageChangeParams:
-        automatic: true
-        containerNames:
-        - ${APPLICATION_NAME}
-        from:
-          kind: ImageStreamTag
-          name: ${APPLICATION_NAME}:${IMAGE_STREAM_TAG}
-      type: ImageChange
 - apiVersion: v1
   kind: Service
   metadata:
