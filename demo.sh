@@ -6,8 +6,10 @@
 
 # Variables
 PROJECT=service-mesh
-DEMO_PROMPT="${GREEN}➜  ${CYAN}03_02 ${COLOR_RESET}"
+DEMO_PROMPT="${GREEN}➜  ${CYAN}03_03 ${COLOR_RESET}"
 # SANDBOX=sandbox-m2.ll9k.p1.openshiftapps.com
+
+eval $(crc oc-env)
 
 clear
 
