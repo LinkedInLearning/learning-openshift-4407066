@@ -6,6 +6,7 @@
 
 # Variables
 PROJECT=service-mesh
+PROMPT_TIMEOUT=5
 DEMO_PROMPT="${GREEN}➜  ${CYAN}03_03 ${COLOR_RESET}"
 # SANDBOX=sandbox-m2.ll9k.p1.openshiftapps.com
 
@@ -18,10 +19,10 @@ pe "oc apply -f 01-service-mesh.yaml"
 wait
 clear
 
-pei "bat 02-app.yaml"
+pe "bat 02-app.yaml"
 pe "oc apply -f 02-app.yaml"
 wait
 
 clear
-pei "curl http://apitest.apps-crc.testing/fortune --silent | jq"
+pe "curl http://apitest.apps-crc.testing/fortune --silent | jq"
 
