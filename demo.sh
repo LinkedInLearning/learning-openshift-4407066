@@ -11,11 +11,11 @@ DEMO_PROMPT="${GREEN}➜  ${CYAN}03_02 ${COLOR_RESET}"
 
 clear
 
-pe "bat 01-service-mesh.yaml"
-pe "oc apply -f 01-service-mesh.yaml"
+pe "bat 01-app.yaml"
+pe "oc apply -f 01-app.yaml"
 wait
 clear
 
-pei "bat 02-app.yaml"
-pe "oc apply -f 02-app.yaml"
+pei "bat 02-cluster-logging-instance.yaml"
+pe "oc apply -f 02-cluster-logging-instance.yaml"
 wait

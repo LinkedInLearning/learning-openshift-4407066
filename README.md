@@ -4,10 +4,10 @@ This is the repository for the LinkedIn Learning course "Learning OpenShift". Th
 
 See the readme file in the main branch for updated instructions and information.
 
-## Chapter 3: Advanced Cloud Native Apps
+## Chapter 4: Scaling and Monitoring Apps
 
-### Video 3: Microservices and Service Mesh
+### Video 1: Logging
 
-This branch contains the YAML files for a simple deployment of an API service, consisting of an image generator, depending on a [Minio](https://min.io/) instance to keep a cache of generated images.
+This branch contains the YAML files for a simple deployment of an application generating log messages, and of a simple installation of ElasticSearch and Kibana on CRC.
 
 The file `demo.sh` requires the [paxtonhare/demo-magic](https://github.com/paxtonhare/demo-magic) project available locally.
