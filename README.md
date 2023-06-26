@@ -9,3 +9,5 @@ See the readme file in the main branch for updated instructions and information.
 ### Video 3: Microservices and Service Mesh
 
 This branch contains the YAML files for a simple deployment of an API service, consisting of an image generator, depending on a [Minio](https://min.io/) instance to keep a cache of generated images.
+
+The file `demo.sh` requires the [paxtonhare/demo-magic](https://github.com/paxtonhare/demo-magic) project available locally.
