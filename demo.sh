@@ -13,7 +13,6 @@ eval $(crc oc-env)
 
 clear
 
-pe "oc new-project service-mesh"
 pe "bat 01-service-mesh.yaml"
 pe "oc apply -f 01-service-mesh.yaml"
 wait
