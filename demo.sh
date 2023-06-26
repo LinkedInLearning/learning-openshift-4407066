@@ -6,7 +6,6 @@
 
 # Variables
 PROJECT=service-mesh
-PROMPT_TIMEOUT=5
 DEMO_PROMPT="${GREEN}➜  ${CYAN}03_03 ${COLOR_RESET}"
 # SANDBOX=sandbox-m2.ll9k.p1.openshiftapps.com
 
