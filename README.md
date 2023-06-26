@@ -4,8 +4,10 @@ This is the repository for the LinkedIn Learning course "Learning OpenShift". Th
 
 See the readme file in the main branch for updated instructions and information.
 
-## Chapter 3: Advanced Cloud Native Apps
+## Chapter 2: Advanced Cloud Native Apps
 
-### Video 3: Microservices and Service Mesh
+### Video 1: Understanding OpenShift security
 
-This branch contains the YAML files for a simple deployment of an API service, consisting of an image generator, depending on a [Minio](https://min.io/) instance to keep a cache of generated images.
+This branch contains the Dockerfile for an OpenShift-compatible container image based on NGINX, and the YAML files required for both a wrong and right deployment of NGINX on OpenShift.
+
+The file `steps.sh` shows the commands required to build a container and interact with the OpenShift image registry.
