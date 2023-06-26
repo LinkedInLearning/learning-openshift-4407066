@@ -25,4 +25,5 @@ wait
 
 clear
 pe "curl http://apitest.apps-crc.testing/fortune --silent | jq"
+pe "crc console --credentials"
 
