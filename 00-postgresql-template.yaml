@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
   name: postgresql
@@ -84,4 +84,4 @@ objects:
     - name: 5432-tcp
       port: 5432
       protocol: TCP
-      targetPort
+      targetPort: 5432
