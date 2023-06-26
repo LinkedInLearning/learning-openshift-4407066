@@ -11,6 +11,7 @@ DEMO_PROMPT="${GREEN}➜  ${CYAN}03_02 ${COLOR_RESET}"
 
 clear
 
+pe "oc new-project service-mesh"
 pe "bat 01-service-mesh.yaml"
 pe "oc apply -f 01-service-mesh.yaml"
 wait
