@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalog
+  template:
+    metadata:
+      labels:
+        app: catalog
+    spec:
+      volumes:
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 128Mi
+      containers:
+      - name: catalog
+        image: registry.gitlab.com/akosma/catalog-dotnet:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmp
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        - name: ASPNETCORE_ConnectionStrings__DefaultConnection
+          value: Host=postgresql:5432;Database=catalog;Username=user;Password=password
+        resources:
+          requests:
+            cpu: '500m'
+            memory: '512Mi'
+          limits:
+            cpu: '500m'
+            memory: '512Mi'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalog
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: catalog
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: catalog
+spec:
+  rules:
+  - host: catalog.apps-crc.testing
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: catalog
+            port:
+              number: 8080
