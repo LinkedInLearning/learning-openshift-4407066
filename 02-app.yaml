@@ -1,0 +1,244 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apitest
+  namespace: service-mesh-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apitest
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: 'true'
+      labels:
+        app: apitest
+    spec:
+      volumes:
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 128Mi
+      containers:
+      - name: apitest
+        image: registry.gitlab.com/akosma/image-go-api:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmp
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        env:
+        - name: GIN_MODE
+          value: release
+        - name: MINIO_USE_SSL
+          value: "false"
+        - name: MINIO_PUBLIC_ENDPOINT
+          value: minio.apps-crc.testing
+        - name: MINIO_ENDPOINT
+          value: minio:9000
+        - name: MINIO_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: username
+        - name: MINIO_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: password
+        resources:
+          requests:
+            cpu: '500m'
+            memory: '512Mi'
+          limits:
+            cpu: '500m'
+            memory: '512Mi'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apitest
+  namespace: service-mesh-test
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: apitest
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: apitest
+  namespace: service-mesh-test
+spec:
+  rules:
+  - host: apitest.apps-crc.testing
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: apitest
+            port:
+              number: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+  namespace: service-mesh-test
+spec:
+  selector:
+    matchLabels:
+      app: minio
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: 'true'
+      labels:
+        app: minio
+    spec:
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: minio-pvc
+      containers:
+      - name: minio
+        resources:
+          requests:
+            cpu: '500m'
+            memory: '512Mi'
+          limits:
+            cpu: '500m'
+            memory: '512Mi'
+        volumeMounts:
+        - name: data
+          mountPath: "/data"
+        image: quay.io/minio/minio:RELEASE.2023-03-09T23-16-13Z
+        args:
+        - server
+        - '--console-address=:9001'
+        - /data
+        env:
+        - name: MINIO_ROOT_USER
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: username
+        - name: MINIO_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: password
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        readinessProbe:
+          httpGet:
+            path: /minio/health/ready
+            port: 9000
+          initialDelaySeconds: 10
+          periodSeconds: 20
+        livenessProbe:
+          httpGet:
+            path: /minio/health/live
+            port: 9000
+          initialDelaySeconds: 120
+          periodSeconds: 20
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: minio-admin
+  namespace: service-mesh-test
+spec:
+  rules:
+    - host: minio-admin.apps-crc.testing
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: minio
+                port:
+                  number: 9001
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: minio
+  namespace: service-mesh-test
+spec:
+  rules:
+    - host: minio.apps-crc.testing
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: minio
+                port:
+                  number: 9000
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minio-pvc
+  namespace: service-mesh-test
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Gi
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: minio-credentials
+  namespace: service-mesh-test
+type: Opaque
+stringData:
+  username: minio
+  password: minio123
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+  namespace: service-mesh-test
+spec:
+  ports:
+    - port: 9000
+      name: api
+      targetPort: 9000
+      protocol: TCP
+    - port: 9001
+      name: webui
+      targetPort: 9001
+      protocol: TCP
+  selector:
+    app: minio
+  type: ClusterIP
+
