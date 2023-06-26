@@ -8,7 +8,10 @@
 DEMO_PROMPT="${GREEN}➜  ${CYAN}04_01 ${COLOR_RESET}"
 
 clear
+pe ""
+wait
 
+clear
 pe "crc config set enable-cluster-monitoring true"
 pe "bat 02-cluster-logging-instance.yaml"
 pe "oc apply -f 02-cluster-logging-instance.yaml"

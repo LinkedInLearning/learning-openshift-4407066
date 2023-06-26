@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: postgresql
+objects:
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: ${APPLICATION_NAME}
+    name: ${APPLICATION_NAME}
+  spec:
+    replicas: 1
+    selector:
+      app: ${APPLICATION_NAME}
+      deploymentconfig: ${APPLICATION_NAME}
+    strategy:
+      type: Rolling
+    template:
+      metadata:
+        labels:
+          app: ${APPLICATION_NAME}
+          deploymentconfig: ${APPLICATION_NAME}
+      spec:
+        containers:
+        - env:
+          - name: POSTGRESQL_USER
+            value: ${POSTGRESQL_USER}
+          - name: POSTGRESQL_PASSWORD
+            value: ${POSTGRESQL_PASSWORD}
+          - name: POSTGRESQL_DATABASE
+            value: ${POSTGRESQL_DATABASE}
+          image: ${IMAGE_STREAM_NAMESPACE}/${IMAGE_STREAM_NAME}:${IMAGE_STREAM_TAG}
+          imagePullPolicy: Always
+          livenessProbe:
+            exec:
+              command:
+              - pg_isready
+              - -U
+              - ${POSTGRESQL_USER}
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          name: ${APPLICATION_NAME}
+          ports:
+          - containerPort: 5432
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - pg_isready
+              - -U
+              - ${POSTGRESQL_USER}
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+          resources:
+            limits:
+              memory: ${MEMORY_LIMIT}
+          volumeMounts:
+          - mountPath: /var/lib/pgsql/data
+            name: postgresql-data
+        volumes:
+        - name: postgresql-data
+          persistentVolumeClaim:
+            claimName: ${APPLICATION_NAME}
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - ${APPLICATION_NAME}
+        from:
+          kind: ImageStreamTag
+          name: ${APPLICATION_NAME}:${IMAGE_STREAM_TAG}
+      type: ImageChange
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: ${APPLICATION_NAME}
+    name: ${APPLICATION_NAME}
+  spec:
+    ports:
+    - name: 5432-tcp
+      port: 5432
+      protocol: TCP
+      targetPort
