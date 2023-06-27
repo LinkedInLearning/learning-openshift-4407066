@@ -4,7 +4,6 @@ metadata:
   labels:
     k8s-app: catalog-monitor
   name: catalog-monitor
-  namespace: catalog
 spec:
   endpoints:
   - interval: 30s
@@ -12,4 +11,4 @@ spec:
     scheme: http
   selector:
     matchLabels:
-      app: catalog
+      app: catalog-app
