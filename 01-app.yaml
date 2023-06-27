@@ -9,6 +9,10 @@ spec:
       app: catalog
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
       labels:
         app: catalog
     spec:
@@ -54,12 +58,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: catalog
   name: catalog
 spec:
   selector:
     app: catalog
   ports:
-    - port: 8080
+    - name: web
+      port: 8080
       targetPort: 8080
   type: ClusterIP
 ---

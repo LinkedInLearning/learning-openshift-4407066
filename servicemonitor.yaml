@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: catalog-monitor
+  labels:
+    app: catalog
+spec:
+  selector:
+    matchLabels:
+      app: catalog
+  endpoints:
+  - port: web
+
