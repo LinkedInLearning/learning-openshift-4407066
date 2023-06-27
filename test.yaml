@@ -20,6 +20,11 @@ spec:
       labels:
         app: catalog-app
     spec:
+      volumes:
+      - name: tmp
+        emptyDir:
+          medium: Memory
+          sizeLimit: 128Mi
       containers:
       - name: catalog
         image: registry.gitlab.com/akosma/catalog-dotnet:latest
