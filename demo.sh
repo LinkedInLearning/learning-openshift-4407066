@@ -8,6 +8,11 @@
 DEMO_PROMPT="${GREEN}➜  ${CYAN}04_02 ${COLOR_RESET}"
 
 clear
+pe "oc process -f 00-postgresql-template.yaml | oc apply -f -"
+pe "oc apply -f 01-app.yaml"
+wait
+
+clear
 pe "bat hpa.yaml"
 pe "oc apply -f hpa.yaml"
 wait
