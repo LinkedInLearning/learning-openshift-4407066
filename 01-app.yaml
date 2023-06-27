@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catalog
+  name: counter
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: catalog
+      app: counter
   template:
     metadata:
       labels:
-        app: catalog
+        app: counter
     spec:
       volumes:
       - name: tmp
@@ -18,8 +18,8 @@ spec:
           medium: Memory
           sizeLimit: 128Mi
       containers:
-      - name: catalog
-        image: registry.gitlab.com/akosma/catalog-dotnet:latest
+      - name: counter
+        image: registry.gitlab.com/akosma/simple-deno-api:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -38,11 +38,6 @@ spec:
             port: 8080
           initialDelaySeconds: 5
           periodSeconds: 10
-        env:
-        - name: ASPNETCORE_ENVIRONMENT
-          value: Development
-        - name: ASPNETCORE_ConnectionStrings__DefaultConnection
-          value: Host=postgresql:5432;Database=catalog;Username=user;Password=password
         resources:
           requests:
             cpu: '500m'
@@ -54,10 +49,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: catalog
+  name: counter
 spec:
   selector:
-    app: catalog
+    app: counter
   ports:
     - port: 8080
       targetPort: 8080
@@ -66,16 +61,16 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: catalog
+  name: counter
 spec:
   rules:
-  - host: catalog.apps-crc.testing
+  - host: counter.apps-crc.testing
     http:
       paths:
       - pathType: Prefix
         path: /
         backend:
           service:
-            name: catalog
+            name: counter
             port:
               number: 8080

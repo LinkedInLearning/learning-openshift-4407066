@@ -6,8 +6,8 @@ See the readme file in the main branch for updated instructions and information.
 
 ## Chapter 4: Scaling and Monitoring Apps
 
-### Video 2: Manual, Horizontal, and Vertical Scaling
+### Video 3: Monitoring apps with Prometheus
 
-This branch contains example YAML files for both a horizontal and a vertical pod autoscalers.
+This branch contains a deployment manifest for an example application exporting data to Prometheus.
 
 The file `demo.sh` requires the [paxtonhare/demo-magic](https://github.com/paxtonhare/demo-magic) project available locally.
