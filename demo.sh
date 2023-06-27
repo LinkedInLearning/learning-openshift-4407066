@@ -5,7 +5,7 @@
 . ~/demo-magic.sh
 
 # Variables
-DEMO_PROMPT="${GREEN}➜  ${CYAN}04_01 ${COLOR_RESET}"
+DEMO_PROMPT="${GREEN}➜  ${CYAN}04_02 ${COLOR_RESET}"
 
 clear
 pe "bat hpa.yaml"
