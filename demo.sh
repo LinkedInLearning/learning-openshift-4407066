@@ -8,10 +8,6 @@
 DEMO_PROMPT="${GREEN}➜  ${CYAN}04_01 ${COLOR_RESET}"
 
 clear
-pe ""
-wait
-
-clear
 pe "crc config set enable-cluster-monitoring true"
 pe "oc process -f 00-postgresql-template.yaml -o yaml | oc apply -f -"
 pe "oc apply -f 01-app.yaml"
