@@ -8,12 +8,11 @@
 DEMO_PROMPT="${GREEN}➜  ${CYAN}04_01 ${COLOR_RESET}"
 
 clear
-pe "crc config set enable-cluster-monitoring true"
-pe "oc process -f 00-postgresql-template.yaml -o yaml | oc apply -f -"
-pe "oc apply -f 01-app.yaml"
+pe "bat hpa.yaml"
+pe "oc apply -f hpa.yaml"
 wait
 
 clear
-pe "bat 02-cluster-logging-instance.yaml"
-pe "oc apply -f 02-cluster-logging-instance.yaml"
+pe "bat vpa.yaml"
+pe "oc apply -f hpa.yaml"
 wait

@@ -1,0 +1,20 @@
+apiVersion: autoscaling.openshift.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vpa
+  updatePolicy:
+    updateMode: "Auto"
+  resourcePolicy:
+    containerPolicies:
+      - containerName: "*"
+        minAllowed:
+          cpu: 10m
+          memory: 100Mi
+        maxAllowed:
+          cpu: 1000m
+          memory: 1Gi
