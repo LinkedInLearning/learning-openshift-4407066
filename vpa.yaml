@@ -1,4 +1,4 @@
-apiVersion: autoscaling.openshift.io/v1
+apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: vpa
@@ -6,7 +6,7 @@ spec:
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: vpa
+    name: catalog
   updatePolicy:
     updateMode: "Auto"
   resourcePolicy:

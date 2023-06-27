@@ -1,13 +1,13 @@
-apiVersion: autoscaling.openshift.io/v1
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: myapp-hpa
+  name: catalog-hpa
 spec:
   scaleTargetRef:
-    kind: DeploymentConfig
-    name: myapp
+    kind: Deployment
+    name: catalog
     apiVersion: apps.openshift.io/v1
     subresource: scale
-  minReplicas: 1
+  minReplicas: 3
   maxReplicas: 10
   targetCPUUtilizationPercentage: 50

@@ -14,5 +14,9 @@ wait
 
 clear
 pe "bat vpa.yaml"
-pe "oc apply -f hpa.yaml"
+pe "oc apply -f vpa.yaml"
+wait
+
+clear
+pe "oc get vpa vpa --output yaml | bat --language yaml"
 wait
