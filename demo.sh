@@ -5,7 +5,7 @@
 . ~/demo-magic.sh
 
 # Variables
-DEMO_PROMPT="${GREEN}➜  ${CYAN}04_02 ${COLOR_RESET}"
+DEMO_PROMPT="${GREEN}➜  ${CYAN}04_03 ${COLOR_RESET}"
 
 clear
 pe "oc apply -f 01-cluster-monitoring-config.yaml"
