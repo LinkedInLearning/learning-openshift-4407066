@@ -11,6 +11,9 @@ clear
 pe "crc config set enable-cluster-monitoring true"
 pe "oc process -f 00-postgresql-template.yaml -o yaml | oc apply -f -"
 pe "oc apply -f 01-app.yaml"
+wait
+
+clear
 pe "bat 02-cluster-logging-instance.yaml"
 pe "oc apply -f 02-cluster-logging-instance.yaml"
 wait
