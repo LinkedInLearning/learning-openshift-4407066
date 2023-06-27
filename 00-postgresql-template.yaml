@@ -44,11 +44,11 @@ objects:
           - containerPort: 5432
             protocol: TCP
           env:
-          - name:  PGUSER
+          - name:  POSTGRESQL_USER
             value: ${POSTGRESQL_USER}
-          - name:  PGPASSWORD
+          - name:  POSTGRESQL_PASSWORD
             value: ${POSTGRESQL_PASSWORD}
-          - name:  PGDATABASE
+          - name:  POSTGRESQL_DATABASE
             value: ${POSTGRESQL_DATABASE}
           - name:  PGPORT
             value: "5432"
