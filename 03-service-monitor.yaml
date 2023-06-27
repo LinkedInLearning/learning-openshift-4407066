@@ -2,8 +2,8 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    k8s-app: catalog-monitor
-  name: catalog-monitor
+    k8s-app: simple-go-api-monitor
+  name: simple-go-api-monitor
 spec:
   endpoints:
   - interval: 30s
@@ -11,4 +11,4 @@ spec:
     scheme: http
   selector:
     matchLabels:
-      app: catalog-app
+      app: simple-go-api-app
