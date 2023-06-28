@@ -1,0 +1,86 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: new-pipeline
+spec:
+  tasks:
+    - name: git-clone
+      params:
+        - name: url
+          value: 'https://gitlab.com/akosma/simple-go-api.git'
+        - name: revision
+          value: ''
+        - name: refspec
+          value: ''
+        - name: submodules
+          value: 'true'
+        - name: depth
+          value: '1'
+        - name: sslVerify
+          value: 'true'
+        - name: crtFileName
+          value: ca-bundle.crt
+        - name: subdirectory
+          value: ''
+        - name: sparseCheckoutDirectories
+          value: ''
+        - name: deleteExisting
+          value: 'true'
+        - name: httpProxy
+          value: ''
+        - name: httpsProxy
+          value: ''
+        - name: noProxy
+          value: ''
+        - name: verbose
+          value: 'true'
+        - name: userHome
+          value: /home/git
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: my-workspace
+    - name: kaniko
+      params:
+        - name: IMAGE
+          value: >-
+            image-registry.openshift-image-registry.svc:5000/my-first-pipeline/my-image
+        - name: DOCKERFILE
+          value: ./Dockerfile
+        - name: CONTEXT
+          value: ./
+        - name: EXTRA_ARGS
+          value: []
+      runAfter:
+        - git-clone
+      taskRef:
+        kind: Task
+        name: kaniko
+      workspaces:
+        - name: source
+          workspace: my-workspace
+  workspaces:
+    - name: my-workspace
+      optional: false
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: new-pipeline-run
+spec:
+  pipelineRef:
+    name: new-pipeline
+  workspaces:
+    - name: my-workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+          storageClassName: crc-csi-hostpath-provisioner
+          volumeMode: Filesystem
+
