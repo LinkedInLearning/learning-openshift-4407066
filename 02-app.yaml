@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.istio.io/inject: 'true'
+        # [ISTIO ANNOTATION HERE]
       labels:
         app: apitest
     spec:
@@ -113,7 +113,7 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.istio.io/inject: 'true'
+        # [ISTIO ANNOTATION HERE]
       labels:
         app: minio
     spec:
