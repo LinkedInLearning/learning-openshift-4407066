@@ -10,6 +10,9 @@ DEMO_PROMPT="${GREEN}➜  ${CYAN}01_07 ${COLOR_RESET}"
 clear
 pe "cd ~/Downloads"
 pe "wget https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz"
+wait
+
+clear
 pe "unxz crc-linux-amd64.tar.xz"
 pe "tar xvf crc-linux-amd64.tar"
 pe "mv $(find . -name 'crc') ~/.local/bin"
