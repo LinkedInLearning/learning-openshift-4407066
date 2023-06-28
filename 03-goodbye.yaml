@@ -11,4 +11,4 @@ spec:
       image: ubuntu
       script: |
         #!/bin/bash
-        echo "Goodby $(params.username)!"
+        echo "Goodbye $(params.username)!"
