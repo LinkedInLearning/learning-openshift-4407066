@@ -4,10 +4,10 @@ This is the repository for the LinkedIn Learning course "Learning OpenShift". Th
 
 See the readme file in the main branch for updated instructions and information.
 
-## Chapter 1: Getting Started
+## Chapter 2: 2. Standard DevOps Practices
 
-### Video 7: Solution: show how to install CRC in Linux
+### Video 6: Solution: setup a CI/CD pipeline in your cluster
 
-This branch contains the demo script showing the steps required to install OpenShift Local or CRC on Linux.
+This branch contains the demo script showing the steps required to create and run a Tekton pipeline on Red Hat OpenShift.
 
 The file `demo.sh` requires the [paxtonhare/demo-magic](https://github.com/paxtonhare/demo-magic) project available locally.
