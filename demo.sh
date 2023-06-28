@@ -20,5 +20,5 @@ wait
 
 clear
 pe "crc setup"
-pe "crc start --pull-secret-file ./pull-secret"
+pe "crc start --pull-secret-file ./pull-secret.txt"
 wait
