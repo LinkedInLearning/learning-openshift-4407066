@@ -5,15 +5,17 @@
 . ~/demo-magic.sh
 
 # Variables
-DEMO_PROMPT="${GREEN}➜  ${CYAN}04_01 ${COLOR_RESET}"
+DEMO_PROMPT="${GREEN}➜  ${CYAN}01_07 ${COLOR_RESET}"
 
 clear
-pe "crc config set enable-cluster-monitoring true"
-pe "oc process -f 00-postgresql-template.yaml -o yaml | oc apply -f -"
-pe "oc apply -f 01-app.yaml"
+pe "cd ~/Downloads"
+pe "wget https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz"
+pe "unxz crc-linux-amd64.tar.xz"
+pe "tar xvf crc-linux-amd64.tar"
+pe "mv $(find . -name 'crc') ~/.local/bin"
 wait
 
 clear
-pe "bat 02-cluster-logging-instance.yaml"
-pe "oc apply -f 02-cluster-logging-instance.yaml"
+pe "crc setup"
+pe "crc start --pull-secret-file ./pull-secret"
 wait
