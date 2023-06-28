@@ -14,8 +14,11 @@ wait
 
 clear
 pe "cd ~/Downloads"
+pe "ls"
 pe "unxz crc-linux-amd64.tar.xz"
-pe "tar xvf crc-linux-amd64.tar"
+pe "ls"
+pe "tar xf crc-linux-amd64.tar"
+pe "ls"
 pe "mv $(find . -name 'crc') ~/.local/bin"
 wait
 
