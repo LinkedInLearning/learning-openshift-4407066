@@ -13,7 +13,7 @@ pe "wget https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift
 wait
 
 clear
-pei "cd ~/Downloads"
+pe "cd ~/Downloads"
 pei "ls"
 pei "unxz crc-linux-amd64.tar.xz"
 pei "ls"
