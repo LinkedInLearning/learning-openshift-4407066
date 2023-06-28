@@ -13,6 +13,7 @@ pe "wget https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift
 wait
 
 clear
+pe "cd ~/Downloads"
 pe "unxz crc-linux-amd64.tar.xz"
 pe "tar xvf crc-linux-amd64.tar"
 pe "mv $(find . -name 'crc') ~/.local/bin"
