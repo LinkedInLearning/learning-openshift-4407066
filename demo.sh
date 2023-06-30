@@ -14,6 +14,11 @@ p "crc start --memory 20480 --cpus 6 --disk-size 300 --nameserver 1.1.1.1 --pull
 wait
 
 clear
+pe "oc whoami"
+pe "oc new-project monitoring"
+wait
+
+clear
 pe "bat 01-cluster-monitoring-config.yaml"
 pe "oc apply -f 01-cluster-monitoring-config.yaml"
 wait
