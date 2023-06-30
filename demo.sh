@@ -15,6 +15,7 @@ pe "oc project"
 pe "oc apply -f 01-service-mesh.yaml"
 pe "bat 02-app.yaml"
 pe "oc apply -f 02-app.yaml"
+pe "watch oc get pods -n service-mesh-test"
 wait
 
 clear
