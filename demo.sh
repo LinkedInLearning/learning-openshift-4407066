@@ -12,7 +12,6 @@ eval $(crc oc-env)
 clear
 pe "oc whoami"
 pe "oc project"
-pe "oc new-project service-mesh-test"
 pe "oc apply -f 01-service-mesh.yaml"
 pe "vim 02-app.yaml"
 pe "oc apply -f 02-app.yaml"
