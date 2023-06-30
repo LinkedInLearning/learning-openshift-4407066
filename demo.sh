@@ -13,7 +13,7 @@ eval $(crc oc-env)
 
 clear
 
-pe "oc new-project microservices-challenge"
+pe "oc new-project service-mesh-test"
 pe "oc apply -f 01-service-mesh.yaml"
 pe "vim 02-app.yaml"
 pe "oc apply -f 02-app.yaml"
