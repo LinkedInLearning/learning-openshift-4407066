@@ -13,7 +13,7 @@ clear
 pe "oc whoami"
 pe "oc project"
 pe "oc apply -f 01-service-mesh.yaml"
-pe "vim 02-app.yaml"
+pe "bat 02-app.yaml"
 pe "oc apply -f 02-app.yaml"
 wait
 
