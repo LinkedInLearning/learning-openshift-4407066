@@ -10,6 +10,8 @@ DEMO_PROMPT="${GREEN}➜  ${CYAN}03_05 ${COLOR_RESET}"
 eval $(crc oc-env)
 
 clear
+pe "oc whoami"
+pe "oc project"
 pe "oc new-project service-mesh-test"
 pe "oc apply -f 01-service-mesh.yaml"
 pe "vim 02-app.yaml"
