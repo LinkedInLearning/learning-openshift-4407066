@@ -45,7 +45,7 @@ To resolve this issue:
 2. Clone this repository into your local machine using the terminal (Mac, Linux), CMD (Windows), or a GUI tool like SourceTree.
 3. Switch to the branch corresponding to the video you're currently watching.
 
-## Recommended LinkedIn Learning Courses
+### Recommended LinkedIn Learning Courses
 
 To get the knowledge required to follow this course, we recommend the following three courses on LinkedIn Learning:
 
