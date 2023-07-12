@@ -4,7 +4,7 @@ This is the repository for the LinkedIn Learning course "Learning OpenShift". Th
 
 See the readme file in the main branch for updated instructions and information.
 
-## Chapter 2: Advanced Cloud Native Apps
+## Chapter 2: Standard DevOps Practices
 
 ### Video 1: Understanding OpenShift security
 
