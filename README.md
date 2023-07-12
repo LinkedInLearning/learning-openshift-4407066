@@ -6,7 +6,7 @@ See the readme file in the main branch for updated instructions and information.
 
 ## Chapter 4: Scaling and Monitoring Apps
 
-### Video 3: Monitoring apps with Prometheus
+### Video 5: Solution: Monitor an application
 
 This branch contains a deployment manifest for an example application exporting data to Prometheus.
 
