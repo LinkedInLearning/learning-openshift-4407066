@@ -1,13 +1,29 @@
 # Learning OpenShift
 This is the repository for the LinkedIn Learning course Learning OpenShift. The full course is available from [LinkedIn Learning][lil-course-url].
 
-_See the readme file in the main branch for updated instructions and information._
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
 
-## Branches
-The branches are structured to correspond to the videos in the course. The naming convention is `CHAPTER#_MOVIE#`. As an example, the branch named `02_03` corresponds to the second chapter and the third video in that chapter. 
-Some branches will have a beginning and an end state. These are marked with the letters `b` for "beginning" and `e` for "end". The `b` branch contains the code as it is at the beginning of the movie. The `e` branch contains the code as it is at the end of the movie. The `main` branch holds the final state of the code when in the course.
+This is the complete list of branches:
+
+- Chapter 1: Getting Started
+    - `01_07`: [Video 7: Solution: show how to install CRC in Linux](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/01_07)
+- Chapter 2: Standard DevOps Practices
+    - `02_01`: [Video 1: Understanding OpenShift security](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/02_01)
+    - `02_02`: [Video 2: Deploying and debugging containers](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/02_02)
+    - `02_03`: [Video 3: Building containers from source code](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/02_03)
+    - `02_06`: [Video 6: Solution: setup a CI/CD pipeline in your cluster](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/02_06)
+- Chapter 3: Advanced Cloud Native Apps
+    - `03_02`: [Video 2: Serverless applications with Knative](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/03_02)
+    - `03_03`: [Video 3: Microservices and Service Mesh](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/03_03)
+    - `03_04`: [Video 4: Challenge: Deploy a Microservices application](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/03_04)
+    - `03_05`: [Video 5: Solution: Deploy a Microservices application](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/03_05)
+- Chapter 4: Scaling and Monitoring Apps
+    - `04_01`: [Video 1: Logging](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/04_01)
+    - `04_02`: [Video 2: Manual, Horizontal, and Vertical Scaling](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/04_02)
+    - `04_03`: [Video 3: Monitoring apps with Prometheus](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/04_03)
+
+### Beware!
 
 When switching from one exercise files branch to the next after making changes to the files, you may get a message like this:
 
@@ -16,15 +32,26 @@ When switching from one exercise files branch to the next after making changes t
     Aborting
 
 To resolve this issue:
-	
+
     Add changes to git using this command: git add .
 	Commit changes using this command: git commit -m "some message"
 
-## Installing
+## Requirements
+
 1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
+	- Students should use a computer running Microsoft Windows, Apple macOS, or Linux.
+    - Students should have Git installed.
+    - They should also have a container management tool installed, such as [Podman](https://podman.io/) or [Docker](https://www.docker.com/).
+2. Clone this repository into your local machine using the terminal (Mac, Linux), CMD (Windows), or a GUI tool like SourceTree.
+3. Switch to the branch corresponding to the video you're currently watching.
+
+## Recommended LinkedIn Learning Courses
+
+To get the knowledge required to follow this course, we recommend the following three courses on LinkedIn Learning:
+
+- ["Learning Docker" by Carlos Nunez](https://www.linkedin.com/learning/learning-docker-17236240/get-up-and-running-quick-with-docker)
+- ["Learning Kubernetes" by Kim Schlesinger](https://www.linkedin.com/learning/learning-kubernetes-16086900/setting-sail-on-your-kubernetes-voyage)
+- ["Learning Git and GitHub" by Ray Villalobos](https://www.linkedin.com/learning/learning-git-and-github-14213624/travel-the-multiverse-with-git-and-github)
 
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
