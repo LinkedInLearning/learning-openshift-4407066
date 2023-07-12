@@ -22,6 +22,7 @@ This is the complete list of branches:
     - `04_01`: [Video 1: Logging](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/04_01)
     - `04_02`: [Video 2: Manual, Horizontal, and Vertical Scaling](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/04_02)
     - `04_03`: [Video 3: Monitoring apps with Prometheus](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/04_03)
+    - `04_05`: [Video 5: Solution: Monitor an application](https://github.com/LinkedInLearning/learning-openshift-4407066/tree/04_05)
 
 ### Beware!
 
