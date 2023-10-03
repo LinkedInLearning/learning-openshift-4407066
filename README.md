@@ -1,6 +1,10 @@
 # Learning OpenShift
 This is the repository for the LinkedIn Learning course Learning OpenShift. The full course is available from [LinkedIn Learning][lil-course-url].
 
+![Learning OpenShift][lil-thumbnail-url] 
+
+If you’re just getting started with Red Hat OpenShift, the Kubernetes-based enterprise platform as a service, you may be faced with a series of frustrating and exceedingly complex challenges. Because while OpenShift offers excellent security, cost effectiveness, and support features, it differs from Kubernetes in a number of critical ways. This course enables developers with Kubernetes experience to become proficient in OpenShift in a reasonably short amount of time. Get an overview of Red Hat OpenShift 4, exploring the major differences between it and Kubernetes. Along the way, instructor Adrian Kosmaczewski demonstrates how to start working with OpenShift 4 clusters, deploying applications, setting up CI/CD pipelines, working with operators and templates, monitoring services, and scaling applications.
+
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
 
@@ -55,8 +59,16 @@ To get the knowledge required to follow this course, we recommend the following 
 - ["Learning Git and GitHub" by Ray Villalobos](https://www.linkedin.com/learning/learning-git-and-github-14213624/travel-the-multiverse-with-git-and-github)
 
 
-[0]: # (Replace these placeholder URLs with actual course URLs)
+### Instructor
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+Adrian Kosmaczewski 
+                            
+
+
+                            
+
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/adrian-kosmaczewski).
+
+[lil-course-url]: https://www.linkedin.com/learning/learning-openshift?dApp=59033956&leis=LAA
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/D560DAQEPNCZkqBRNrA/learning-public-crop_675_1200/0/1695934210812?e=2147483647&v=beta&t=ib1wWBKZcEPkhSOsxquta3F_ppd7-du7atyINSzsa2k
 
